@@ -16,6 +16,7 @@ pipeline {
                         docker build -t ${DOCKER_ID}/${service}:${IMAGE_TAG} ./${service}
                         sleep 6
                         """
+                    }
                 }
             }
         }
@@ -29,6 +30,7 @@ pipeline {
                     sh "docker login -u $DOCKER_ID -p $DOCKER_PASS"
                     SERVICES.split(',').each { service ->
                         sh "docker push ${DOCKER_ID}/${service}:${IMAGE_TAG}"
+                    }
                 }
             }
         }
