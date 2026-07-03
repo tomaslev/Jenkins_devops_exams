@@ -10,7 +10,7 @@ pipeline {
         stage('Docker Build'){ // docker build image stage
             steps {
                 script {
-                    // Looping through each service and build
+                    // Loop through each service and build
                     SERVICES.split(',').each { service ->
                         sh """
                         docker build -t ${DOCKER_ID}/${service}:${IMAGE_TAG} ./${service}
