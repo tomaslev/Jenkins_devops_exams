@@ -3,7 +3,7 @@ pipeline {
         DOCKER_ID = "bonwitt"  // replace this with your docker-id
         SERVICES = "cast-service,movie-service"  // comma-separated list
         NAMESPACES = "dev,qa,staging,prod"
-        IMAGE_TAG = "${GIT_BRANCH}-${GIT_COMMIT.take(7)}" 
+        IMAGE_TAG = "${GIT_BRANCH.tokenize('/').last()}-${GIT_COMMIT.take(7)}" 
     }
     agent any // Jenkins will be able to select all available agents
     stages {
