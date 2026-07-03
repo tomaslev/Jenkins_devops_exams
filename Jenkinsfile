@@ -47,7 +47,7 @@ pipeline {
                     """
                     SERVICES.split(',').each { service ->
                         sh """
-                            helm upgrade --install ${service} ./charts/fastapiapp \
+                            helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
                             -n dev
@@ -69,7 +69,7 @@ pipeline {
                     """
                     SERVICES.split(',').each { service ->
                         sh """
-                            helm upgrade --install ${service} ./charts/fastapiapp \
+                            helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
                             -n qa
@@ -91,7 +91,7 @@ pipeline {
                     """
                     SERVICES.split(',').each { service ->
                         sh """
-                            helm upgrade --install ${service} ./charts/fastapiapp \
+                            helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
                             -n staging
@@ -119,7 +119,7 @@ pipeline {
                     """
                     SERVICES.split(',').each { service ->
                         sh """
-                            helm upgrade --install ${service} ./charts/fastapiapp \
+                            helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
                             -n prod
