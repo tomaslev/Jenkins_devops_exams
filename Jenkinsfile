@@ -106,7 +106,7 @@ pipeline {
 
         stage('Approval Gate & Deploy to Prod') {
             when {
-                branch 'master'  // Only master can reach this stage
+                expression { env.GIT_BRANCH.tokenize('/').last() == 'master' }  // Only master can reach this stage
             }
             environment {
                 KUBECONFIG = credentials("config")
