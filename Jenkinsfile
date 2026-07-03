@@ -50,6 +50,7 @@ pipeline {
                             helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
+                            --set service.type=ClusterIP \
                             -n dev
                         """
                     }
@@ -72,6 +73,7 @@ pipeline {
                             helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
+                            --set service.type=ClusterIP \
                             -n qa
                         """
                     }
@@ -94,6 +96,7 @@ pipeline {
                             helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
+                            --set service.type=ClusterIP \
                             -n staging
                         """
                     }
@@ -122,6 +125,7 @@ pipeline {
                             helm upgrade --install ${service} ./charts \
                             --set image.repository=${DOCKER_ID}/${service} \
                             --set image.tag=${IMAGE_TAG} \
+                            --set service.type=ClusterIP \
                             -n prod
                         """
                     }
